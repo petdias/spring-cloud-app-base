@@ -1,0 +1,9 @@
+
+<md-list>
+  <md-list-item ng-repeat="campaign in $ctrl.campaigns">
+      <p>{{campaign.name}}</p>
+      <md-button class="md-secondary" ng-click="$ctrl.editCampaign($event, campaign)">
+          Editar
+      </md-button>
+  </md-list-item>
+</md-list>

@@ -1,0 +1,8 @@
+rootProject.name = 'spring-cloud-app-base'
+
+include "eureka-server"
+include "orchestrator-service"
+include "campaign-service"
+include "zuul"
+include "hystrix-dashboard"
+include "config-server"

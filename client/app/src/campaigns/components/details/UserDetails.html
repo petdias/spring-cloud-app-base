@@ -1,0 +1,51 @@
+<md-dialog aria-label="Mango (Fruit)">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 ng-show="$ctrl.campaign.id">Atualizar dados campanha</h2>
+                <h2 ng-show="!$ctrl.campaign.id">Cadastrar nova campanha</h2>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Nome</label>
+                        <input ng-model="$ctrl.campaign.name">
+                    </md-input-container>
+                </div>
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Time</label>
+                        <md-select ng-model="campaign.team">
+                            <md-option ng-repeat="club in $ctrl.clubs" value="{{club.id}}">
+                                {{club.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout-gt-xs="row">
+                    <div flex-gt-xs>
+                        <h4>Período de Vigência</h4>
+                        <md-datepicker ng-model="$ctrl.campaign.startDate" md-placeholder="Data Início" md-hide-icons="all" md-date-locale=""></md-datepicker>
+                        <md-datepicker ng-model="$ctrl.campaign.endDate" md-placeholder="Data Fim"></md-datepicker>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+                More on Wikipedia
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="answer('not useful')">
+                Not Useful
+            </md-button>
+            <md-button ng-click="answer('useful')">
+                Useful
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
