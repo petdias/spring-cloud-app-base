@@ -15,7 +15,7 @@ eureka:
 
 
 turbine:
-  appConfig: orchestrator-service,campaign-service
+  appConfig: orchestrator-service, campaign-service, club-service
 ---
 spring:
   profiles: docker
@@ -36,4 +36,4 @@ eureka:
            defaultZone: http://eureka-server:8761/eureka/
 
 turbine:
-  appConfig: orchestrator-service,campaign-service
+  appConfig: orchestrator-service, campaign-service, club-service
