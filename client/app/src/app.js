@@ -8,8 +8,9 @@ import 'angular-resource';
 
 import AppController from 'src/AppController';
 import Campaigns from 'src/campaigns/Campaigns';
+import Users from 'src/users/Users';
 
-export default angular.module( 'main-app', [ 'ngMaterial', 'ngResource', Campaigns.name ] )
+export default angular.module( 'main-app', [ 'ngMaterial', 'ngResource', Campaigns.name, Users.name ] )
   .config(($mdIconProvider, $mdThemingProvider) => {
     // Register the user `avatar` icons
     $mdIconProvider

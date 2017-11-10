@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 
@@ -18,15 +19,19 @@ public final class Campaign {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @NotNull
     @Column(name = "nome")
     private String name;
 
+    @NotNull
     @Column(name = "data_inicio")
     private Date startDate;
 
+    @NotNull
     @Column(name = "data_fim")
     private Date endDate;
 
+    @NotNull
     @Column(name = "id_time")
     private Integer team;
 

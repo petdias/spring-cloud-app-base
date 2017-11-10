@@ -40,12 +40,14 @@
     <!-- Container #4 -->
     <md-content flex id="content" ng-show="app.selected == 'Campanha'">
       <campaign-list
-              campaigns="app.campaigns">
+         campaigns="app.campaigns">
       </campaign-list>
     </md-content>
 
     <md-content flex id="content" ng-show="app.selected == 'Usuario'">
-      Teste Usuário
+      <user-list
+          users="app.users">
+      </user-list>
     </md-content>
 
   </div>

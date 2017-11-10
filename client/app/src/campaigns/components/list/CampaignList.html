@@ -1,6 +1,7 @@
 
 <md-list>
-  <h2 ng-show="$ctrl.alert">{{$ctrl.alert.message}}</h2>
+  <h2 ng-show="alert">{{alert.message}}</h2>
+  <h2 ng-show="!$ctrl.campaigns">Nenhuma Campanha cadastrada! </h2>
   <md-list-item ng-repeat="campaign in $ctrl.campaigns">
       <p>{{campaign.name}}</p>
       <md-button class="md-secondary" ng-click="$ctrl.editCampaign($event, campaign)">
