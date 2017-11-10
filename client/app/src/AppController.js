@@ -1,9 +1,10 @@
 
-function AppController($mdSidenav, CampaignsDataService) {
+function AppController($mdSidenav, $scope, CampaignsDataService) {
   var self = this;
 
   self.selected     = null;
   self.campaigns    = [ ];
+  self.alert        = {};
   self.selectView   = selectView;
   self.toggleList   = toggleUsersList;
 
@@ -14,12 +15,13 @@ function AppController($mdSidenav, CampaignsDataService) {
   function selectView ( view ) {
     self.selected = view;
     if (view === 'Campanha') {
-        CampaignsDataService.query(function(campaigns) {
+        CampaignsDataService.query().$promise.then(function(campaigns) {
             self.campaigns = campaigns;
-            console.log('self.campaigns', self.campaigns);
+        }, function(errResponse) {
+            $scope.alert = {type : "Erro", message : "Erro a lista de campanhas!" + errResponse};
         });
     }
   }
 }
 
-export default ['$mdSidenav', 'CampaignsDataService', AppController];
+export default ['$mdSidenav', '$scope', 'CampaignsDataService', AppController];

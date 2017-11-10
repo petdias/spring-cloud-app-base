@@ -54,19 +54,19 @@ public class HystrixWrappedCampaignServiceClient implements CampaignServiceClien
         throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Falha ao acessar o serviço para recuperar a lista de campanhas");
     }
 
-    public Campaign fallbackGet() {
-        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Falha ao acessar o serviço para recuperar a campanha");
+    public Campaign fallbackGet(Integer id) {
+        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Falha ao acessar o serviço para recuperar a campanha de id " + id);
     }
 
-    public Campaign fallbackCreate() {
-        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Falha ao acessar o serviço para criar uma campanha");
+    public Campaign fallbackCreate(Campaign campaign) {
+        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Falha ao acessar o serviço para criar a seguinte campanha: " + campaign.getName());
     }
 
-    public Campaign fallbackUpdate() {
-        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Falha ao acessar o serviço para atualizar a campanha");
+    public Campaign fallbackUpdate(Integer id, Campaign campaign) {
+        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Falha ao acessar o serviço para atualizar a seguinte campanha nome: " + campaign.getName() + " id: " + id) ;
     }
 
-    public void fallbackDelete() {
-        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Falha ao acessar o serviço para deletar a campanha");
+    public void fallbackDelete(Integer id) {
+        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Falha ao acessar o serviço para deletar a campanha de id" + id);
     }
 }

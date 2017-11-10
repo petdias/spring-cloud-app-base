@@ -1,5 +1,6 @@
 
 <md-list>
+  <h2 ng-show="$ctrl.alert">{{$ctrl.alert.message}}</h2>
   <md-list-item ng-repeat="campaign in $ctrl.campaigns">
       <p>{{campaign.name}}</p>
       <md-button class="md-secondary" ng-click="$ctrl.editCampaign($event, campaign)">
@@ -7,3 +8,7 @@
       </md-button>
   </md-list-item>
 </md-list>
+<md-button class="md-fab md-fab-bottom-right" ng-click="$ctrl.newCampaign($event)" aria-label="add">
+    +
+</md-button>
+
