@@ -10,13 +10,13 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "time")
+@Table(name = "team")
 public final class Club {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_team")
+    @SequenceGenerator(name = "sq_team", sequenceName = "sq_team")
     private Integer id;
 
-    @Column(name = "nome")
     private String name;
 }

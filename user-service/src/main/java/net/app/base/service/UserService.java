@@ -4,6 +4,7 @@ import net.app.base.model.User;
 import net.app.base.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
@@ -31,5 +32,9 @@ public class UserService {
 
     public void delete(Integer id) {
         userRepository.delete(id);
+    }
+
+    public Boolean existsByEmail(String email) {
+        return !ObjectUtils.isEmpty(userRepository.findByEmail(email));
     }
 }

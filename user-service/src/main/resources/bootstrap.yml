@@ -21,14 +21,19 @@ spring:
   rabbitmq:
     host: localhost
   datasource:
-    url: jdbc:mysql://localhost:3306/app_socio_torcedor?useSSL=false
-    username: root
-    password: root
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/postgres?currentSchema=club-member
+      username: postgres
+      password: root
+  # JPA properties
   jpa:
-    show-sql: true
-    database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
 
 eureka:
   instance:
@@ -38,56 +43,6 @@ eureka:
     fetchRegistry: true
     serviceUrl:
             defaultZone: http://localhost:8761/eureka/
-
-endpoints:
- shutdown:
-  enabled: true
-
----
-spring:
-  profiles: dev
-  application:
-    name: user-service
-  sleuth:
-    sampler:
-      percentage: 1
-  zipkin:
-    base-url: http://zipkin:9411/
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        service-id: config-server
-      fail-fast: true
-      retry:
-        initial-interval: 2000
-        max-interval: 10000
-        multiplier: 2
-        max-attempts: 10
-  rabbitmq:
-    host: rabbitmq
-  datasource:
-    url: jdbc:mysql://localhost:3306/app_socio_torcedor?useSSL=false
-    username: root
-    password: root
-  jpa:
-    show-sql: true
-    database-platform: org.hibernate.dialect.MySQL5Dialect
-    hibernate:
-      ddl-auto: update
-
-server:
-  port: 8120
-
-eureka:
-  instance:
-    hostname: user-service
-    prefer-ip-address: true
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-            defaultZone: http://eureka-server:8761/eureka/
 
 endpoints:
  shutdown:

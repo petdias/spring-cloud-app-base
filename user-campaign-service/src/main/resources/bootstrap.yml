@@ -1,9 +1,9 @@
 server:
-  port: 8070
+  port: 8130
 
 spring:
   application:
-    name: campaign-service
+    name: user-campaign-service
   sleuth:
     sampler:
       percentage: 1
@@ -21,11 +21,11 @@ spring:
   rabbitmq:
     host: localhost
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=club-member
-    username: postgres
-    password: root
-  # JPA properties
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/postgres?currentSchema=club-member
+        username: postgres
+        password: root
+      # JPA properties
   jpa:
     hibernate:
       ddl-auto: none

@@ -51,4 +51,9 @@ public class UserController {
     public void delete(@PathVariable("id") Integer id) {
         userService.delete(id);
     }
+
+    @RequestMapping(value = "/users/check/{email}", method = RequestMethod.GET)
+    public Boolean existsByEmail(@PathVariable("email") String email) {
+         return  userService.existsByEmail(email);
+    }
 }

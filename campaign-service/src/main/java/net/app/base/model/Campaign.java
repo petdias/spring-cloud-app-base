@@ -12,27 +12,25 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-@Table(name = "campanha")
+@Table(name = "campaign")
 public final class Campaign {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_campaign")
+    @SequenceGenerator(name = "sq_campaign", sequenceName = "sq_campaign")
     private Integer id;
 
     @NotNull
-    @Column(name = "nome")
     private String name;
 
     @NotNull
-    @Column(name = "data_inicio")
     private Date startDate;
 
     @NotNull
-    @Column(name = "data_fim")
     private Date endDate;
 
     @NotNull
-    @Column(name = "id_time")
+    @Column(name = "team_id")
     private Integer team;
 
 }
