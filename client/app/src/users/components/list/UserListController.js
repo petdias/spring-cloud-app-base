@@ -5,7 +5,7 @@ class UserListController {
         this.$log = $log;
     }
 
-    editUser(ev, userId) {
+    editUser(ev, user) {
         this.$mdDialog.show({
             controller: EditUserController,
             templateUrl: 'src/users/components/details/UserDetails.html',
@@ -17,13 +17,10 @@ class UserListController {
 
         function EditUserController($filter, $scope, $mdDialog, ClubsDataService, UsersDataService) {
             $scope.alert = {};
+            this.user = {};
             this.hasUpdate = true;
 
-            UsersDataService.get({ id:userId }).$promise.then(function(user) {
-                this.user = user;
-            }, function(errResponse) {
-                $scope.alert = {type : "Erro", message : "Erro ao recuperar dados do usuário!" + errResponse};
-            });
+            this.user = user;
 
             this.user.birthDate = $filter('date')(user.birthDate, "yyyy-MM-dd");
 
