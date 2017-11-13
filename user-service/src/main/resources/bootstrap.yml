@@ -22,7 +22,7 @@ spring:
     host: localhost
   datasource:
       driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://localhost:5432/postgres?currentSchema=club-member
+      url: jdbc:postgresql://localhost:5432/clube-member
       username: postgres
       password: root
   # JPA properties
@@ -32,7 +32,7 @@ spring:
     show-sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    open-in-view: false
+    open-in-view: true
     generate-ddl: false
 
 eureka:

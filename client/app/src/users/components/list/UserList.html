@@ -1,7 +1,7 @@
 
 <md-list>
     <h2 ng-show="alert">{{alert.message}}</h2>
-    <h2 ng-show="!$ctrl.users">Nenhum Usuário cadastrado! </h2>
+    <h2 ng-show="$ctrl.users.length == 0">Nenhum Usuário cadastrado! </h2>
     <md-list-item ng-repeat="user in $ctrl.users">
         <p>{{user.name}}</p>
         <md-button class="md-secondary" ng-click="$ctrl.editUser($event, user)">

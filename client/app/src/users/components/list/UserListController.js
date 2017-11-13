@@ -5,21 +5,26 @@ class UserListController {
         this.$log = $log;
     }
 
-    editUser(ev, user) {
+    editUser(ev, userId) {
         this.$mdDialog.show({
             controller: EditUserController,
             templateUrl: 'src/users/components/details/UserDetails.html',
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToClose: true,
-            controllerAs: "$ctrl",
-            fullscreen: true
+            controllerAs: "$ctrl"
         });
 
         function EditUserController($filter, $scope, $mdDialog, ClubsDataService, UsersDataService) {
             $scope.alert = {};
             this.hasUpdate = true;
-            this.user = user;
+
+            UsersDataService.get({ id:userId }).$promise.then(function(user) {
+                this.user = user;
+            }, function(errResponse) {
+                $scope.alert = {type : "Erro", message : "Erro ao recuperar dados do usuário!" + errResponse};
+            });
+
             this.user.birthDate = $filter('date')(user.birthDate, "yyyy-MM-dd");
 
             ClubsDataService.query().$promise.then(function(clubs) {
@@ -39,6 +44,14 @@ class UserListController {
             $scope.close = function() {
                 $mdDialog.hide();
             };
+
+            $scope.checked = function(campaign) {
+                return campaign.selected = !campaign.selected;
+            };
+
+            $scope.connect = function(campaigns) {
+                return campaigns;
+            };
         }
     };
 
@@ -50,7 +63,7 @@ class UserListController {
             targetEvent: ev,
             clickOutsideToClose: true,
             controllerAs: "$ctrl",
-            fullscreen: true
+            height: 300
         });
 
         function NewCampaignController($scope, $mdDialog, ClubsDataService, UsersDataService) {
@@ -64,8 +77,8 @@ class UserListController {
             });
 
             $scope.save = function(user) {
-                UsersDataService.save(user).$promise.then(function () {
-                    $scope.alert = {type: "Sucesso", message: "suário atualizado com sucesso!"};
+                UsersDataService.save(user).$promise.then(function (user) {
+                    $scope.alert = {type: "Sucesso", message: "Usuário atualizado com sucesso!"};
                 }, function (errResponse) {
                     $scope.alert = {type: "Erro", message: "Erro ao atualizar o usuário!" + errResponse};
                 });
@@ -73,6 +86,10 @@ class UserListController {
 
             $scope.close = function() {
                 $mdDialog.hide();
+            };
+
+            $scope.checked = function(campaign) {
+                return campaign.selected = !campaign.selected;
             };
         }
     };

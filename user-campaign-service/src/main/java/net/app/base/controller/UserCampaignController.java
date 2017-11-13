@@ -6,6 +6,7 @@ import net.app.base.repository.UserCampaignRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -31,6 +32,11 @@ public class UserCampaignController {
     @RequestMapping(value = "/users-campaigns/{userId}", method = RequestMethod.GET)
     public List<UserCampaign> findBy(@PathVariable("userId") Integer userId) {
         return userCampaignRepository.findByUserId(userId);
+    }
+
+    @RequestMapping(value = "/users-campaigns/{userId}", method = RequestMethod.DELETE)
+    public void deleteByUser(@PathVariable("userId") Integer userId) {
+        userCampaignRepository.deleteByUserId(userId);
     }
 
 }

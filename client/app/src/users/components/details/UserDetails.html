@@ -6,7 +6,7 @@
                 <h2 ng-show="!$ctrl.hasUpdate">Cadastrar novo Usuário</h2>
             </div>
         </md-toolbar>
-        <md-dialog-content>
+        <md-dialog-content >
             <div class="md-dialog-content">
                 <h2 ng-show="alert">{{alert.message}}</h2>
                 <div layout-gt-xs="row">
@@ -36,6 +36,23 @@
                         <h4>Data de Nascimento</h4>
                         <md-datepicker id="startDate" ng-model="$ctrl.user.birthDate" md-placeholder="Data Nascimento"></md-datepicker>
                     </div>
+                </div>
+                <div layout-gt-xs="row" ng-show="$ctrl.user.campaigns.length > 0">
+                    <fieldset class="demo-fieldset" >
+                        <legend class="demo-legend">Associar Campanhas</legend>
+                        <div layout="row" layout-wrap flex>
+                            <div class="demo-select-all-checkboxes" flex="100" ng-repeat="campaign in $ctrl.user.campaigns">
+                                <md-checkbox ng-checked="campaign.selected" ng-click="checked(campaign)">
+                                    {{ campaign.name }}
+                                </md-checkbox>
+                            </div>
+                        </div>
+                        <div layout="row" layout-wrap flex>
+                            <md-button ng-click="connect($ctrl.user.campaigns)" class="md-primary">
+                                Associar
+                            </md-button>
+                        </div>
+                    </fieldset>
                 </div>
             </div>
         </md-dialog-content>

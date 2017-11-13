@@ -1,6 +1,5 @@
 package net.app.base.feign;
 
-import net.app.base.projection.Campaign;
 import net.app.base.projection.User;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,16 +14,19 @@ import java.util.List;
 public interface UserServiceClient {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    List<Campaign> findUsers();
+    List<User> findUsers();
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-    Campaign get(@PathVariable("id") Integer id);
+    User get(@PathVariable("id") Integer id);
+
+    @RequestMapping(value = "/users/check/{email}", method = RequestMethod.GET)
+    User findByEmail(@PathVariable("email") String email);
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    Campaign create(@RequestBody @Valid User user);
+    User create(@RequestBody @Valid User user);
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
-    Campaign update(@PathVariable("id") Integer id, @RequestBody User user);
+    User update(@PathVariable("id") Integer id, @RequestBody User user);
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
     void delete(@PathVariable("id") Integer id);

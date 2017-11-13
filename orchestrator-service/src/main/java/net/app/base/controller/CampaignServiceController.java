@@ -30,6 +30,11 @@ public class CampaignServiceController {
         return campaignServiceClient.findCurrentCampaigns();
     }
 
+    @RequestMapping(value = "/campaigns/team/{id}", method = RequestMethod.GET)
+    public List<Campaign> findBy(@PathVariable("id") Integer id) {
+        return campaignServiceClient.findBy(id);
+    }
+
     @RequestMapping(value = "/campaigns/{id}", method = RequestMethod.GET)
     public Campaign get(@PathVariable("id") Integer id) {
         return campaignServiceClient.get(id);

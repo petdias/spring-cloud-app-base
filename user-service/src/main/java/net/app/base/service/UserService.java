@@ -34,7 +34,7 @@ public class UserService {
         userRepository.delete(id);
     }
 
-    public Boolean existsByEmail(String email) {
-        return !ObjectUtils.isEmpty(userRepository.findByEmail(email));
+    public User findByEmail(String email) {
+        return userRepository.findByEmailStartingWith(email);
     }
 }

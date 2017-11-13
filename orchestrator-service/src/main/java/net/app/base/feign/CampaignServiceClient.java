@@ -16,6 +16,9 @@ public interface CampaignServiceClient {
     @RequestMapping(value = "/campaigns", method = RequestMethod.GET)
     List<Campaign> findCurrentCampaigns();
 
+    @RequestMapping(value = "/campaigns/team/{id}", method = RequestMethod.GET)
+    List<Campaign> findBy(@PathVariable("id") Integer id);
+
     @RequestMapping(value = "/campaigns/{id}", method = RequestMethod.GET)
     Campaign get(@PathVariable("id") Integer id);
 

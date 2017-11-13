@@ -17,6 +17,10 @@ public class CampaignService {
         return campaignRepository.findCurrentCampaigns();
     }
 
+    public List<Campaign> findTeam(Integer team) {
+        return campaignRepository.findByTeam(team);
+    }
+
     public Campaign get(Integer id) {
         return campaignRepository.getOne(id);
     }

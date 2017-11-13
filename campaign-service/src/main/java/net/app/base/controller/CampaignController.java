@@ -33,6 +33,11 @@ public class CampaignController {
         return campaignService.get(id);
     }
 
+    @RequestMapping(value = "/campaigns/team/{id}", method = RequestMethod.GET)
+    public List<Campaign> findBy(@PathVariable("id") Integer id) {
+        return campaignService.findTeam(id);
+    }
+
     @RequestMapping(value = "/campaigns", method = RequestMethod.POST)
     public Campaign create(@RequestBody @Valid Campaign campaign) {
         return campaignService.create(campaign);

@@ -22,7 +22,7 @@ spring:
     host: localhost
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=club-member
+    url: jdbc:postgresql://localhost:5432/clube-member
     username: postgres
     password: root
   # JPA properties

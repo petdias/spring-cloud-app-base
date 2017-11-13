@@ -14,8 +14,8 @@ import javax.persistence.*;
 public final class UserCampaign {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_user_campaign")
-    @SequenceGenerator(name = "sq_user_campaign", sequenceName = "sq_user_campaign")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_campaign_seq")
+    @SequenceGenerator(name = "user_campaign_seq", sequenceName = "user_campaign_seq")
     private Integer id;
 
     @Column(name = "id_user")

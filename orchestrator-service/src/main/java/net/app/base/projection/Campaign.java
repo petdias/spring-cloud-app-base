@@ -19,4 +19,6 @@ public class Campaign {
     private Date endDate;
 
     private Integer team;
+
+    private Boolean selected;
 }

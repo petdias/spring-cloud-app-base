@@ -27,6 +27,12 @@ public class HystrixWrappedCampaignServiceClient implements CampaignServiceClien
     }
 
     @Override
+    @HystrixCommand(fallbackMethod = "fallbackFindByTeam")
+    public List<Campaign> findBy(Integer id) {
+        return campaignServiceClient.findBy(id);
+    }
+
+    @Override
     @HystrixCommand(fallbackMethod = "fallbackGet")
     public Campaign get(Integer id) {
         return campaignServiceClient.get(id);
@@ -48,6 +54,10 @@ public class HystrixWrappedCampaignServiceClient implements CampaignServiceClien
     @HystrixCommand(fallbackMethod = "fallbackDelete")
     public void delete(Integer id) {
         campaignServiceClient.delete(id);
+    }
+
+    public List<Campaign> fallbackFindByTeam(Integer team) {
+        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Falha ao acessar o serviço para recuperar a lista de campanhas do time de id " + team);
     }
 
     public List<Campaign> fallbackList() {

@@ -16,8 +16,8 @@ import java.util.Date;
 public final class Campaign {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_campaign")
-    @SequenceGenerator(name = "sq_campaign", sequenceName = "sq_campaign")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "campaign_seq")
+    @SequenceGenerator(name = "campaign_seq", sequenceName = "campaign_seq")
     private Integer id;
 
     @NotNull
