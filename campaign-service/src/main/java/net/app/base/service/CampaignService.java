@@ -50,7 +50,7 @@ public class CampaignService {
         campaignRepository.delete(id);
     }
 
-    private void periodValidation(Campaign campaign) {
+    protected void periodValidation(Campaign campaign) {
         // Recupera todas as campanhas que estão dentro do período selecionado.
         List<Campaign> campaigns = campaignRepository.findByPeriod(campaign.getStartDate(), campaign.getEndDate());
         // Casa exista alguma campanha será necessário adicionar um dia na data fim das campanhas.
@@ -68,7 +68,7 @@ public class CampaignService {
         }
     }
 
-    private void validEndDate(Campaign campaign) {
+    protected void validEndDate(Campaign campaign) {
         // verifica se existe alguma campanha com a mesma data fim.
         Campaign c = campaignRepository.findByEndDate(campaign.getEndDate(), campaign.getId());
         if (!ObjectUtils.isEmpty(c)) {
