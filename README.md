@@ -71,3 +71,12 @@ realizada a integração Spring Boot + Netflix OSS, surgindo assim o Spring Clou
         spring-boot-starter-actuator
         spring-cloud-starter-hystrix-dashboard
         spring-cloud-netflix-turbine
+        
+-> WebAPP (Client)
+
+    Foi criado uma aplicação web unico de forma independente aos micro serviços.
+    Optamos por utilizar o AngularJS Material por possuir uma interface amigavel e responsiva.
+    O Client envia as requisições para o serviço do Zuul que direciona para o "orchestrator-service" 
+    analisar e encaminar para os serviços responsaveis pela execução da tarefa.
+    
+-> Bando de dados relacional Postgres 9.6
