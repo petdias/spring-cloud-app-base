@@ -16,24 +16,3 @@ eureka:
 
 turbine:
   appConfig: orchestrator-service, campaign-service, club-service, user-service
----
-spring:
-  profiles: docker
-  application:
-    name: hystrix-dashboard
-
-server:
-  port: 8050
-
-eureka:
- instance:
-   hostname: hystrix-dashboard
-   prefer-ip-address: true
- client:
-   registerWithEureka: true
-   fetchRegistry: true
-   serviceUrl:
-           defaultZone: http://eureka-server:8761/eureka/
-
-turbine:
-  appConfig: orchestrator-service, campaign-service, club-service, user-service
