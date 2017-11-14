@@ -1,18 +1,18 @@
 # spring-cloud-app-base
 
-A Aplicação foi criada com o intuito de demontrar de forma pratica um sistema baseado em micro serviços.
+A Aplicação foi criada com o intuito de demonstrar de forma pratica um sistema baseado em micro serviços.
 Para isso nos optamos em utilizar a steck spring-cloud/ netflix.
 
-O Cenário desenvolvido basicamento foi um CRUD de campanha, CRUD de usuário onde um usuário pode cadastrar e associar campanhas ao mesmo,
+O Cenário desenvolvido basicamente foi um CRUD de campanha, CRUD de usuário onde um usuário pode cadastrar e associar campanhas ao mesmo,
 Assim foi desenvolvido um serviço para gerenciar as informações das campanhas, um serviço para gerenciar os usuários e 
 um serviço para gerenciar a associação entre usuário e campanha.
-Como nosso cenário é unico, optamos por criar uma base de dados unica, mais a arquitetura permite que cada serviço possua sua base propria, de forma independente inclusive de tecnologia.
-A divisão entre os serviços foi baseado nos conceitos de domain driven design(DDD), mais expecificamente no contexto de cada funcionalidade.
+Como nosso cenário é único, optamos por criar uma base de dados única, mais a arquitetura permite que cada serviço possua sua base própria, de forma independente inclusive de tecnologia.
+A divisão entre os serviços foi baseado nos conceitos de domain driven design(DDD), mais especificamente no contexto de cada funcionalidade.
 
-Como subdividimos os serviços em varios partes expecificas, optamos por implementar um padrão que consiste em ter um outro serviço de fachada para gerenciar a comunicação entre as partes.
+Como subdividimos os serviços em vários partes específicas, optamos por implementar um padrão que consiste em ter um outro serviço de fachada para gerenciar a comunicação entre as partes.
 
 Uma das principais vantagem em desenvolver uma aplicação baseada em micro serviços está na divisão dos pontos de falhas. 
-Por exemplo no caso do nosso cenario, se o serviço de campanha falhar, a aplicação continuaria rodando e as outras funcionalidades não sofreriam nenhum impacto. 
+Por exemplo no caso do nosso cenário, se o serviço de campanha falhar, a aplicação continuaria rodando e as outras funcionalidades não sofreriam nenhum impacto. 
 Outra questão grande vantagem na arquitetura SOA é a escalabilidade, pois cada serviço possui funções especificas. 
 Assim podem facilmente serem acessados e reutilizados por varias aplicações.  
 
