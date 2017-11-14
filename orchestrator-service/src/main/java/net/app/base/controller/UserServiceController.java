@@ -52,12 +52,18 @@ public class UserServiceController {
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public User create(@RequestBody @Valid User user) {
+        // Verifico se já existe um usuário com o mesmo email.
         User u = findByEmail(user.getEmail());
 
         if (ObjectUtils.isEmpty(u)) {
+            // Caso não exista usuário não esteja cadastrado o sistema cria um novo.
             u = userServiceClient.create(user);
+            // Apos criar o usuário o sistema vai no serviço de campanha e
+            // busca as campanhas cadastradas para o mesmo time do usuário.
             u.setCampaigns(getCampaignByTeam(u.getTeam()));
         } else {
+            // Caso o usuário já esteja cadastrado com o mesmo e-mail.
+            // o sistema busca a lista de campanhas associadas.
             u.setCampaigns(getCampaigns(user));
         }
 
@@ -79,9 +85,12 @@ public class UserServiceController {
     }
 
     private List<Campaign> getCampaigns(User user) {
+        // realiza a busca das campanhas de acordo com o time do usuário.
         List<Campaign> campaigns = getCampaignByTeam(user.getTeam());
+        // realiza a busca de campanhas associadas ao usuário.
         List <UserCampaign> userCampaigns = userCampaignServiceClient.findBy(user.getId());
         if (userCampaigns.isEmpty()) {
+            // Caso exista campanhas associadas o sistema irá setar a campanha para selecionada.
             campaigns.forEach(c -> {
                 userCampaigns.forEach(uc -> {
                     if (uc.getCampaignId().equals(c.id)) {
